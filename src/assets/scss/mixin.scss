@@ -1,0 +1,74 @@
+@mixin retina() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}
+
+@mixin position ($type, $top: n, $right: n, $bottom: n, $left: n) {
+  position: $type;
+
+  @if $top != n {
+    top: $top;
+  }
+
+  @if $right != n {
+    right: $right;
+  }
+
+  @if $bottom != n {
+    bottom: $bottom;
+  }
+
+  @if $left != n {
+    left: $left;
+  }
+}
+
+@mixin breakpoint($point, $min: true) {
+  @if $point == ie10 {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      @content;
+    }
+  }
+
+  @else if $point == ie {
+    /* stylelint-disable-next-line */
+    @media \0screen\,screen\9 {
+      @content;
+    }
+  }
+
+  @else {
+    @if $min == true {
+      @media only screen and (min-width: $point) {
+        @content;
+      }
+    }
+
+    @else {
+      @media only screen and (max-width: $point) {
+        @content;
+      }
+    }
+  }
+}
+
+// project mixin
+@mixin box-shadow ($shadow-color: #000) {
+  box-shadow: 0 2px 12px 0 rgba($shadow-color, .1);
+}
+
+@mixin fixed-card ($border-color: #ebeef5) {
+  border: 1px solid $border-color;
+  border-radius: 4px;
+}
+
+@mixin list-style ($shadow-color: #000) {
+  background-color: #f4f7f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 12px 0 rgba($shadow-color, .1);
+}
+
+@function to-rem($px) {
+  @return ($px / 14px) * 1rem;
+}

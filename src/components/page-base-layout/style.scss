@@ -1,0 +1,59 @@
+@import "@/assets/scss/share";
+
+.wrapper {
+  height: 100%;
+  background-color: #e4e7ed;
+  line-height: 1;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: to-rem(15px) to-rem(15px) 0 to-rem(15px);
+}
+
+.title__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.title__content__main-title {
+  align-self: end;
+  font-size: to-rem(24px);
+  font-weight: 500;
+  color: $main-title-font-color;
+}
+
+.title__content__sub-title {
+  align-self: end;
+  padding-left: to-rem(4px);
+  font-size: to-rem(15px);
+  font-weight: 300;
+  color: $sub-title-font-color;
+}
+
+
+.container {
+  padding: to-rem(15px);
+}
+
+.block {
+  width: 100%;
+  background-color: #fff;
+  color: $main-title-font-color;
+  box-shadow: 0 to-rem(1px) to-rem(1px) rgba(0, 0, 0, 0.1);
+  border-top: to-rem(3px) solid #d2d6de;
+  border-radius: to-rem(3px);
+}
+
+.block-padding {
+  padding: to-rem(10px);
+}
+
+.block-footer {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: to-rem(3px);
+  border-bottom-left-radius: to-rem(3px);
+}

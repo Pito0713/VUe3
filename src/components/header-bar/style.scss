@@ -1,0 +1,55 @@
+@import "@/assets/scss/share";
+
+.header-bar {
+  height: $header-height;
+  background-color: $header-bar-background-color;
+  color: $header-font-color;
+  display: flex;
+  color: #ffffff;
+}
+
+.header-bar__left {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header-bar__right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.menu-switch {
+  width: 42px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform .1s linear;
+  transform: rotate(0deg);
+
+  &:hover {
+    background-color: $header-bar-active-background-color;
+  }
+
+  &:active {
+    background-color: $header-bar-active-background-color;
+  }
+
+  &:focus {
+    background-color: $header-bar-active-background-color;
+  }
+}
+
+.menu-switch-image {
+  width: 20px;
+  height: 14px;
+}
+
+.is-minnor {
+  transform: rotate(180deg);
+}

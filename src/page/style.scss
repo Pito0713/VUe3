@@ -1,0 +1,73 @@
+@import "@/assets/scss/share";
+
+$layout__container__footer__text_color: #3c8dbc;
+
+.el-container {
+  display: flex;
+  overflow: auto;
+}
+
+.layout__container {
+  min-width: $pc - $aside-width;
+  height: 100vh;
+
+  .menu-zoom & {
+    min-width: $pc - $aside-width-zoom;
+  }
+}
+
+.layout__container__header {
+  padding: 0;
+  width: 100%;
+}
+
+.layout__container__main {
+  height: 100vh;
+  background-color: #e4e7ed;
+  padding: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > div:not(.welcome) {
+    min-height: 100%;
+  }
+}
+
+.el-footer {
+  padding: 0 15px;
+}
+
+.layout__container__footer {
+  height: $footer-height;
+
+  .layout__container__footer__text_color,
+  .layout__container__footer__text {
+    line-height: $footer-height;
+    color: #444444;
+  }
+
+  .layout__container__footer__text_color {
+    color: $layout__container__footer__text_color;
+  }
+
+  .font-bold {
+    font-weight: bold;
+  }
+}
+
+.layout__aside {
+  @include basetransition(width);
+
+  width: $aside-width !important;
+
+  .menu-zoom & {
+    width: $aside-width-zoom !important;
+  }
+
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}

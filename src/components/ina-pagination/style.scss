@@ -1,0 +1,29 @@
+@import "@/assets/scss/share";
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 10px;
+}
+
+.pagination-slot {
+  display: flex;
+  padding: 0 3px;
+  text-align: center;
+  background-color: #f4f4f5;
+  cursor: pointer;
+
+  &:hover {
+    color: $acitve-font-color;
+  }
+}
+
+.el-pagination {
+  padding: 0;
+}
+
+:deep(.el-pager li) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
