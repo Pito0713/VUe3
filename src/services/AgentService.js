@@ -106,7 +106,7 @@ class AgentService {
       })
 
       res.data = res.data.filter(item => {
-        if (body.agentName !== undefined) return item.agentName === body.agentName
+        if (body.name !== undefined) return item.name === body.name
         return true
       })
 

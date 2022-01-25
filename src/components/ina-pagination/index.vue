@@ -11,14 +11,14 @@
     next-text="»"
     layout="slot, prev, pager, next"
   )
-    span.pagination-slot(tabIndex="1" @click="props.handlePageChange(1)") {{ '首页' }}
+    span.pagination-slot(tabIndex="1" @click="props.handlePageChange(1)") {{ '首頁' }}
 
   el-pagination(
     :total="props.resultTable.total"
     small
     layout="slot"
   )
-    span.pagination-slot(tabIndex="2" @click="props.handlePageChange(lastPage)") {{ '末页' }}
+    span.pagination-slot(tabIndex="2" @click="props.handlePageChange(lastPage)") {{ '末頁' }}
 
 </template>
 

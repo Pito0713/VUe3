@@ -35,25 +35,19 @@
           el-input(:disabled="disabledForm.amount" v-model="fetchForm.amount" size="small")
 
       el-form(label-width="100px" ref="form" label-position="top" :inline="true")
-        form-item(:label="'入分'")
+        form-item(:label="'轉入'")
           el-input(:disabled="disabledForm.intoScore" v-model="fetchForm.intoScore" size="small" :placeholder="'欲入分'" clearable)
 
-        form-item(:label="'入量'")
-          el-input(:disabled="disabledForm.intoAmount" v-model="fetchForm.intoAmount" size="small" :placeholder="'欲入量'" clearable)
-
-        form-item(:label="'(輸出)原因'")
+        form-item(:label="'(轉入)原因'")
           el-select(:disabled="disabledForm.intoPaymentReason" v-model="fetchForm.intoPaymentReason" size="small" :placeholder="'请選擇(輸入)原因'")
             el-option(v-for="(item, index) of INTO_PAYMENT_REASON_LIST" :label="item.label" :value="item.value" :key="index")
 
-        form-item(:label="'(輸出)備註'")
+        form-item(:label="'(轉入)備註'")
           el-input(:disabled="disabledForm.intoPaymentRemark" v-model="fetchForm.intoPaymentRemark" maxlength="100" show-word-limit type="textarea" size="small" :placeholder="'填寫(輸入)備註'" clearable)
 
       el-form(label-width="100px" ref="form" label-position="top" :inline="true")
-        form-item(:label="'提分'")
+        form-item(:label="'轉出'")
           el-input(:disabled="disabledForm.raisePoints" v-model="fetchForm.raisePoints" size="small" :placeholder="'欲出分'" clearable)
-
-        form-item(:label="'提量'")
-          el-input(:disabled="disabledForm.raiseAmount" v-model="fetchForm.raiseAmount" size="small" :placeholder="'欲出量'" clearable)
 
         form-item(:label="'(輸出)原因'")
           el-select(:disabled="disabledForm.raisePaymentReason" v-model="fetchForm.raisePaymentReason" size="small" :placeholder="'请選擇(輸出)原因'")
@@ -98,10 +92,8 @@ export default {
       wallet: '',
       amount: '',
       intoScore: '',
-      intoAmount: '',
       intoPaymentReason: '',
       raisePoints: '',
-      raiseAmount: '',
       raisePaymentReason: '',
       raisePaymentRemark: ''
     })
@@ -112,10 +104,8 @@ export default {
       wallet: false,
       amount: false,
       intoScore: false,
-      intoAmount: false,
       intoPaymentReason: false,
       raisePoints: false,
-      raiseAmount: false,
       raisePaymentReason: false,
       raisePaymentRemark: false
     })
@@ -134,19 +124,6 @@ export default {
     )
 
     watch(
-      () => fetchForm.value.intoAmount,
-      (newValue, oldValue) => {
-        const rule = new RegExp(/^(\d*)(\.\d{0,2})?$/)
-        const isOnlyNumber = rule.test(newValue)
-        if (!isOnlyNumber) {
-          if (!['', null, undefined].includes(newValue)) {
-            fetchForm.value.intoAmount = oldValue
-          }
-        }
-      }
-    )
-
-    watch(
       () => fetchForm.value.raisePoints,
       (newValue, oldValue) => {
         const rule = new RegExp(/^(\d*)(\.\d{0,2})?$/)
@@ -154,19 +131,6 @@ export default {
         if (!isOnlyNumber) {
           if (!['', null, undefined].includes(newValue)) {
             fetchForm.value.raisePoints = oldValue
-          }
-        }
-      }
-    )
-
-    watch(
-      () => fetchForm.value.raiseAmount,
-      (newValue, oldValue) => {
-        const rule = new RegExp(/^(\d*)(\.\d{0,2})?$/)
-        const isOnlyNumber = rule.test(newValue)
-        if (!isOnlyNumber) {
-          if (!['', null, undefined].includes(newValue)) {
-            fetchForm.value.raiseAmount = oldValue
           }
         }
       }
@@ -189,10 +153,8 @@ export default {
         wallet: true,
         amount: true,
         intoScore: false,
-        intoAmount: false,
         intoPaymentReason: false,
         raisePoints: false,
-        raiseAmount: false,
         raisePaymentReason: false,
         raisePaymentRemark: false
       }
@@ -205,10 +167,8 @@ export default {
         wallet: '',
         amount: '',
         intoScore: '',
-        intoAmount: '',
         intoPaymentReason: '',
         raisePoints: '',
-        raiseAmount: '',
         raisePaymentReason: '',
         raisePaymentRemark: ''
       }
@@ -253,14 +213,12 @@ export default {
       // 驗證
       if (['', null, undefined].includes(fetchForm.value.intoPaymentReason)) {
         if (
-          !['', null, undefined].includes(fetchForm.value.intoScore) ||
-          !['', null, undefined].includes(fetchForm.value.intoAmount)
+          !['', null, undefined].includes(fetchForm.value.intoScore)
         ) return warningElMessageBox(warningList.intoPayment)
       }
       if (['', null, undefined].includes(fetchForm.value.raisePaymentReason)) {
         if (
-          !['', null, undefined].includes(fetchForm.value.raisePoints) ||
-          !['', null, undefined].includes(fetchForm.value.raiseAmount)
+          !['', null, undefined].includes(fetchForm.value.raisePoints)
         ) return warningElMessageBox(warningList.raisePayment)
       }
 
@@ -272,11 +230,9 @@ export default {
       if (!['', null, undefined].includes(fetchForm.value.wallet)) submitData.wallet = fetchForm.value.wallet
       if (!['', null, undefined].includes(fetchForm.value.amount)) submitData.amount = fetchForm.value.amount
       if (!['', null, undefined].includes(fetchForm.value.intoScore)) submitData.intoScore = fetchForm.value.intoScore
-      if (!['', null, undefined].includes(fetchForm.value.intoAmount)) submitData.intoAmount = fetchForm.value.intoAmount
       if (!['', null, undefined].includes(fetchForm.value.intoPaymentReason)) submitData.intoPaymentReason = fetchForm.value.intoPaymentReason
       if (!['', null, undefined].includes(fetchForm.value.intoPaymentRemark)) submitData.intoPaymentRemark = fetchForm.value.intoPaymentRemark
       if (!['', null, undefined].includes(fetchForm.value.raisePoints)) submitData.raisePoints = fetchForm.value.raisePoints
-      if (!['', null, undefined].includes(fetchForm.value.raiseAmount)) submitData.raiseAmount = fetchForm.value.raiseAmount
       if (!['', null, undefined].includes(fetchForm.value.raisePaymentReason)) submitData.raisePaymentReason = fetchForm.value.raisePaymentReason
       if (!['', null, undefined].includes(fetchForm.value.raisePaymentRemark)) submitData.raisePaymentRemark = fetchForm.value.raisePaymentRemark
 

@@ -17,7 +17,7 @@
             a {{ userAccount + '/' + userAuth }}
 
   .navigation-area(v-if="menuEnable")
-    a {{ '導覽區' }}
+    a {{ '導 覽 區' }}
 
   el-scrollbar(:class="{ 'el-scrollbar_collapse': !menuEnable }")
     el-menu.aside-menu__menu(
@@ -73,7 +73,6 @@ export default {
       if (result !== undefined) return true
       else return false
     }
-    console.log(MENU_LIST)
 
     return {
       pageCode,

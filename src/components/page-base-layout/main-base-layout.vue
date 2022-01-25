@@ -18,7 +18,7 @@
         //- 搜尋欄標題文字
         //- 預設文字顯示 搜寻条件，有特例文字才需傳入
         slot(name="searchBarTitle")
-          | 搜寻条件
+          | 搜尋條件
         div.container__search__title__button(
           @click="handleIsExtend"
         )
