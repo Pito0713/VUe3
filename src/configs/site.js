@@ -5,23 +5,26 @@ export const TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 // 預設語系時區
 export const TIMEZONE_DEFAULT = 'Asia/Shanghai'
 
+// 時間是否可變動
+export const TIMEZONE_ENABLE = true
+
 export const MENU_LIST = [
   {
-    code: 5,
+    code: 1,
     name: 'bulletins',
     text: '會員管理',
     child: [
-      { code: 30, name: 'bulletin', text: '會員列表', route: 'general-agent/general-agent-report' },
-      { code: 31, name: 'message', text: '新增會員', route: 'general-agent/add-general-agent' }
+      { code: 11, name: 'bulletin', text: '會員列表', route: 'general-agent/general-agent-report' },
+      { code: 12, name: 'message', text: '新增會員', route: 'general-agent/add-general-agent' }
     ]
   },
   {
-    code: 9,
+    code: 2,
     name: 'points',
     text: '點數紀錄',
     child: [
-      { code: 56, name: 'points-operation/points-list', text: '點數紀錄', route: 'points-operation/points-list' },
-      { code: 57, name: 'points-operation/points-serve', text: '系统轉點服務', route: 'points-operation/points-serve' }
+      { code: 21, name: 'points-operation/points-list', text: '點數紀錄', route: 'points-operation/points-list' },
+      { code: 22, name: 'points-operation/points-serve', text: '系统轉點服務', route: 'points-operation/points-serve' }
     ]
   }
 ]

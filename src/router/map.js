@@ -5,7 +5,13 @@ const routes = [
     component: () => import('@/page'),
     children: [
       // == 首頁 ==
-      { path: '/', component: () => import('@/page/templates/welcome'), name: 'welcome', meta: { requiresAuth: true } },
+      {
+        path: '/',
+        component: () => import('@/page/templates/welcome'),
+        name: 'welcome',
+        // 路由紀錄 是否有全線權限
+        meta: { requiresAuth: true }
+      },
       // // -- 會員列表 --
       { path: '/general-agent/general-agent-report', component: () => import('@/page/templates/general-agent/general-agent-report'), name: 'general-agent/general-agent-report', meta: { requiresAuth: true } },
       { path: '/general-agent/general-agent-report/general-agent-update', component: () => import('@/page/templates/general-agent/general-agent-report/general-agent-update'), name: 'general-agent/general-agent-report/general-agent-update', meta: { requiresAuth: true } },

@@ -3,14 +3,17 @@
   .header-bar__left
     .menu-switch(@click="handleToggleMenu" :class="{ 'is-minnor': menuEnable }")
       img.menu-switch-image(src="./images/toggleMenu.svg")
+  .header-bar__right
+    Date
 </template>
 
 <script>
-import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import Date from './date'
 
 export default {
   components: {
+    Date
   },
 
   props: [
@@ -25,10 +28,6 @@ export default {
     const route = useRoute()
     const router = useRouter()
 
-    const isInWelcomePage = computed(() => {
-      return route.name === 'welcome'
-    })
-
     const handleToggleMenu = () => {
       emit('toggleMenu')
     }
@@ -36,7 +35,6 @@ export default {
     return {
       route,
       router,
-      isInWelcomePage,
       handleToggleMenu
     }
   }

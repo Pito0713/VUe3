@@ -12,6 +12,10 @@ export default {
 
   setup () {
     const routeName = computed(() => useRoute())
+    const timezone = computed(() => Store.state.timezone)
+
+    // timezone
+    if (['', null, undefined].includes(timezone.value)) Store.dispatch('setMoment')
 
     // aside-menu
     watch(

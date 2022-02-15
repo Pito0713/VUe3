@@ -123,19 +123,6 @@ export default {
       }
     )
 
-    watch(
-      () => fetchForm.value.raisePoints,
-      (newValue, oldValue) => {
-        const rule = new RegExp(/^(\d*)(\.\d{0,2})?$/)
-        const isOnlyNumber = rule.test(newValue)
-        if (!isOnlyNumber) {
-          if (!['', null, undefined].includes(newValue)) {
-            fetchForm.value.raisePoints = oldValue
-          }
-        }
-      }
-    )
-
     // == event ==
     const initIsGetInfo = () => {
       isGetInfo.value = false
@@ -265,6 +252,19 @@ export default {
         confirmButtonText: '確定'
       }).catch(() => {})
     }
+
+    watch(
+      () => fetchForm.value.raisePoints,
+      (newValue, oldValue) => {
+        const rule = new RegExp(/^(\d*)(\.\d{0,2})?$/)
+        const isOnlyNumber = rule.test(newValue)
+        if (!isOnlyNumber) {
+          if (!['', null, undefined].includes(newValue)) {
+            fetchForm.value.raisePoints = oldValue
+          }
+        }
+      }
+    )
 
     // == init ==
     const init = async () => {

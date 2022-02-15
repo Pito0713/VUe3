@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { MENU_LIST, TIMEZONE_DEFAULT } from '@/configs/site'
+import { MENU_LIST, TIMEZONE_DEFAULT, TIMEZONE_ENABLE } from '@/configs/site'
 import moment from 'moment-timezone'
 import router from '@/router'
 
@@ -20,22 +20,14 @@ export default createStore({
       state.timezone_num = 0
     },
 
-    SET_STATUS (state, payload) {
-      state.status = payload
-    },
-
     SET_PAGE_CODE (state, payload) {
       state.pageCode = payload
-    },
-
-    SET_MENU (state, payload) {
-      state.menu = payload
     },
 
     SET_TIME_MOMENT (state, payload) {
       state.timezone = TIMEZONE_DEFAULT
       moment.tz.setDefault(TIMEZONE_DEFAULT)
-      state.timezone_num = moment().format('ZZ').slice(0, -2).num()
+      if (TIMEZONE_ENABLE) window.localStorage.setItem('timezone', TIMEZONE_DEFAULT)
     }
 
   },
@@ -71,8 +63,8 @@ export default createStore({
       }
     },
 
-    setMoment ({ state }) {
-      moment.tz.setDefault(state.timezone)
+    setMoment ({ commit }) {
+      commit('SET_TIME_MOMENT')
     }
   },
 
