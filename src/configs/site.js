@@ -1,5 +1,3 @@
-export const DEFAULT_DELAY_TIME = 500
-
 export const TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
 // 預設語系時區

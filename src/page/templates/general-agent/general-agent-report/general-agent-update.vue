@@ -55,7 +55,7 @@ import { ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import mixinApi from './mixin-api'
 import { ElMessageBox, ElMessage } from 'element-plus'
-import { deepCopy, timeFormatter } from '@/helper'
+import { timeFormatter } from '@/helper'
 import { GENERAL_AGENT_STATUS_LIST } from '@/configs/site'
 import formItem from '@/components/form-item'
 
@@ -139,7 +139,7 @@ export default {
       if (!loading.value) {
         loading.value = true
 
-        const submitData = deepCopy(fetchForm.value)
+        const submitData = fetchForm.value
         const isSuccess = await mixinApi.putGeneralAgent(submitData)
         if (isSuccess) {
           ElMessage({

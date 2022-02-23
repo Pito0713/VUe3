@@ -53,7 +53,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import mixinApi from './mixin-api'
-import { sleep, deepCopy, timeFormatter } from '@/helper'
+import { sleep, timeFormatter } from '@/helper'
 import inaPagination from '@/components/ina-pagination'
 import { GENERAL_AGENT_STATUS_LIST } from '@/configs/site'
 
@@ -83,7 +83,7 @@ export default {
     // == event ==
     const search = async () => {
       fetchForm.value.page = 1
-      const submitData = deepCopy(fetchForm.value)
+      const submitData = fetchForm.value
       await renderResultTable(submitData)
     }
 
@@ -104,14 +104,14 @@ export default {
       const result = await mixinApi.getGeneralAgentTableList(submitData)
       if (result !== undefined) {
         resultTable.value = result
-        fetchFormState.value = deepCopy(formData)
+        fetchFormState.value = formData
       }
       loading.value = false
     }
 
     const handlePageChange = async (targetPage) => {
       fetchFormState.value.page = targetPage
-      const submitData = deepCopy(fetchFormState.value)
+      const submitData = fetchFormState.value
       await renderResultTable(submitData)
     }
 
@@ -122,7 +122,7 @@ export default {
     }
 
     const goUpdatePage = (row) => {
-      const fetchForm = deepCopy(row)
+      const fetchForm = row
       router.push({
         name: 'general-agent/general-agent-report/general-agent-update',
         query: {

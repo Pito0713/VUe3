@@ -62,7 +62,7 @@
 import { ref } from 'vue'
 import mixinApi from './mixin-api'
 import moment from 'moment-timezone'
-import { sleep, deepCopy, rfc3339Transform, rfc3339TimeFormatter, getDateString } from '@/helper'
+import { sleep, rfc3339Transform, rfc3339TimeFormatter, getDateString } from '@/helper'
 import inaPagination from '@/components/ina-pagination'
 import { POINTS_OPERATION_PAYMENT_LIST } from '@/configs/site'
 
@@ -126,14 +126,14 @@ export default {
       const result = await mixinApi.getPointsOperationList(submitData)
       if (result !== undefined) {
         resultTable.value = result
-        fetchFormState.value = deepCopy(formData)
+        fetchFormState.value = formData
       }
       loading.value = false
     }
 
     const handlePageChange = async (targetPage) => {
       fetchFormState.value.page = targetPage
-      const submitData = deepCopy(fetchFormState.value)
+      const submitData = fetchFormState.value
       await renderResultTable(submitData)
     }
 

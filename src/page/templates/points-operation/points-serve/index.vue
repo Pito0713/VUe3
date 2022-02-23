@@ -67,7 +67,6 @@
 <script>
 import { ref, watch } from 'vue'
 import mixinApi from './mixin-api'
-import { deepCopy } from '@/helper'
 import formItem from '@/components/form-item'
 import { ElMessageBox, ElMessage } from 'element-plus'
 
@@ -180,7 +179,7 @@ export default {
 
         const result = await mixinApi.getPointsServeinfo(submitData)
         if (!['', null, undefined].includes(result[0])) {
-          fetchForm.value = deepCopy(result[0])
+          fetchForm.value = result[0]
           isGetInfo.value = true
         } else {
           isGetInfo.value = false

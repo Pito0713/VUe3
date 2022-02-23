@@ -29,7 +29,6 @@ export default createStore({
       moment.tz.setDefault(TIMEZONE_DEFAULT)
       if (TIMEZONE_ENABLE) window.localStorage.setItem('timezone', TIMEZONE_DEFAULT)
     }
-
   },
 
   actions: {
@@ -41,8 +40,10 @@ export default createStore({
       // 先撈清單內路徑
       let targetName = router.currentRoute.value.name
       const targetroute = MENU_LIST.find((node) => {
+        //  找到目前相關的Menu 路徑
         const target = node.child.find(subNode => subNode.route === targetName)
         if (target) {
+          // commit 呼叫mutaction
           commit('SET_PAGE_CODE', target.code)
         }
         return target

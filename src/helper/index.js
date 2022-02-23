@@ -5,26 +5,6 @@ import { ElMessage } from 'element-plus'
 
 // ============================= 共用時間 =============================
 
-// 取的當天日期 YYYY-MM-DD
-export function getToday (time) {
-  const daliyFormat = 'YYYY-MM-DD'
-  const today = moment().format(daliyFormat)
-
-  return time ? `${today} ${time}` : today
-}
-
-// 取的當下時間 YYYY-MM-DD-HH-mm-ss
-export function getCurrentTime () {
-  // YYYY-MM-DD HH:mm:ss
-  return moment().format(TIME_FORMAT)
-}
-
-// 後台時區時間轉換到UTC時間
-export function passToUTC (val, format = TIME_FORMAT) {
-  // YYYY-MM-DD HH:mm:ss
-  return moment(val).utc().format(format)
-}
-
 // 將時間轉換為RFC3339
 export function rfc3339Transform (time) {
   return moment(time).format()
@@ -47,28 +27,6 @@ export function timeFormatter (row, column, cellValue) {
 
 export function getDateString (date) {
   return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`
-}
-
-// ============================= 物件共用 ============================
-
-// 物件深度複製
-export function deepCopy (val) {
-  const refList = new WeakMap()
-  return _copy(val)
-
-  function _copy (obj) {
-    const isArray = Array.isArray(obj)
-    const isObject = Object.prototype.toString.call(obj) === '[object Object]'
-
-    if (!isArray && !isObject) return obj
-    if (refList.has(obj)) return refList.get(obj)
-
-    const clone = isArray ? [] : {}
-    refList.set(obj, clone)
-
-    for (const prop of Object.keys(obj)) clone[prop] = _copy(obj[prop])
-    return clone
-  }
 }
 
 // ============================= function 共用 =============================
